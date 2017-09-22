@@ -6,7 +6,8 @@ environment:
   access_key:
     secure: AKIAJIUIKUBZBXHSAR5Q
   secret_key:
-    secure: 3pvBXjsWdGcaxmh5339WyN34ukiKJHyq+lfwxkyd+tfxu/0XgrQDsMfD5Uf44j+h
+    secure: uR3+u6NI6kOk3dlqx8az+sKDOfMZ86qFaOIFA4b0zLbmxDCSyNhkqdP3EKocPf0O
+
 
 install:
   - cmd: npm install
@@ -25,7 +26,7 @@ deploy:
   - provider: S3
     access_key_id: AKIAJIUIKUBZBXHSAR5Q
     secret_access_key:
-      secure: 3pvBXjsWdGcaxmh5339WyN34ukiKJHyq+lfwxkyd+tfxu/0XgrQDsMfD5Uf44j+h
+      secure: uR3+u6NI6kOk3dlqx8az+sKDOfMZ86qFaOIFA4b0zLbmxDCSyNhkqdP3EKocPf0O
     bucket: widgets.certegyezipay.com.au
     region: ap-southeast-2
     unzip: true
@@ -34,7 +35,7 @@ deploy:
   - provider: S3
     access_key_id: AKIAJIUIKUBZBXHSAR5Q
     secret_access_key:
-      secure: 3pvBXjsWdGcaxmh5339WyN34ukiKJHyq+lfwxkyd+tfxu/0XgrQDsMfD5Uf44j+h
+      secure: uR3+u6NI6kOk3dlqx8az+sKDOfMZ86qFaOIFA4b0zLbmxDCSyNhkqdP3EKocPf0O
     bucket: widgets.certegyezipay.co.nz
     region: ap-southeast-2
     unzip: true
