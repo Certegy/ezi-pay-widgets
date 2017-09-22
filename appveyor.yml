@@ -1,67 +1,51 @@
-branches:
-  only:
-    - master
+#branches:
+#  only:
+#    - master
 environment:
   access_key:
-    secure: UvGZuMN7cMD8Sa0hN5v2tky70NJZsxDiKWQaau/+s8E=
+    secure: AKIAJIUIKUBZBXHSAR5Q
   secret_key:
-    secure: mMKmFPTJVUqgGIgJ+dJW0lCMYxJx4x8Vuv7KriN/AVh6vnv7gy3wn1ixsOOKT3nq
+    secure: 3pvBXjsWdGcaxmh5339WyN34ukiKJHyq+lfwxkyd+tfxu/0XgrQDsMfD5Uf44j+h
+
 install:
   - cmd: npm install
-build: off
-on_success:
-- cmd: npm run build
-- ps: |
-    Write-Host "Branch is '$env:APPVEYOR_REPO_BRANCH'"
-      Set-DefaultAWSRegion -Region ap-southeast-2
-      Write-Host "Encrypted AWS access key: '$env:access_key'"
-      Write-Host "Encrypted secret key: '$env:secret_key'"
-      Set-AWSCredentials -AccessKey $env:access_key -SecretKey $env:secret_key
-      $bucketName = "widgets.oxipay.com.au"
-      $existingItems = Get-S3Object -BucketName $bucketName
-      Write-Host "Removing objects from '$bucketName'"
-      foreach($s3object in $existingItems) {
-        Remove-S3Object -BucketName $bucketName -Key $s3object.Key -Force:$true
-      } 
-      cd dist/au
-      $itemsToUpload = Get-ChildItem -Path (pwd).path
-      Write-Host "Uploading site to '$bucketName'"
-      foreach($itemToUpload in $itemsToUpload) {
-        $objectName = $itemToUpload.FullName -replace [Regex]::Escape((Get-Item -Path ".\" -Verbose).FullName+"\"), ""
-        if ($objectName -like "*.*") {
-          Write-S3Object -BucketName $bucketName -File $objectName -Key $objectName
-        } else {
-          Write-S3Object -BucketName $bucketName -Directory $objectName -KeyPrefix $objectName -Recurse
-        }
-      }
-      ## NZ deploy
-      $bucketName = "widgets.oxipay.co.nz"
-      $existingItems = Get-S3Object -BucketName $bucketName
-      Write-Host "Removing objects from '$bucketName'"
-      foreach($s3object in $existingItems) {
-        Remove-S3Object -BucketName $bucketName -Key $s3object.Key -Force:$true
-      }
-      cd ..
-      cd ..
-      cd dist/nz
-      $itemsToUpload = Get-ChildItem -Path (pwd).path
-      Write-Host "Uploading site to '$bucketName'"
-      foreach($itemToUpload in $itemsToUpload) {
-        $objectName = $itemToUpload.FullName -replace [Regex]::Escape((Get-Item -Path ".\" -Verbose).FullName+"\"), ""
-        if ($objectName -like "*.*") {
-          Write-S3Object -BucketName $bucketName -File $objectName -Key $objectName
-        } else {
-          Write-S3Object -BucketName $bucketName -Directory $objectName -KeyPrefix $objectName -Recurse
-        }
-      }
+build_script:
+  - cmd: npm run build
+
+artifacts:
+  - path: ezipay-au
+    name: ezipay-au
+    type: zip
+  - path: ezipay-nz
+    name: ezipay-nz
+    type: zip
+
+deploy:
+  - provider: S3
+    access_key_id: AKIAJIUIKUBZBXHSAR5Q
+    secret_access_key:
+      secure: 3pvBXjsWdGcaxmh5339WyN34ukiKJHyq+lfwxkyd+tfxu/0XgrQDsMfD5Uf44j+h
+    bucket: widgets.certegyezipay.com.au
+    region: ap-southeast-2
+    unzip: true
+    set_public: true
+    artifact: ezipay-au
+  - provider: S3
+    access_key_id: AKIAJIUIKUBZBXHSAR5Q
+    secret_access_key:
+      secure: 3pvBXjsWdGcaxmh5339WyN34ukiKJHyq+lfwxkyd+tfxu/0XgrQDsMfD5Uf44j+h
+    bucket: widgets.certegyezipay.co.nz
+    region: ap-southeast-2
+    unzip: true
+    set_public: true
+    artifact: ezipay-nz
 
 notifications:
   - provider: Email
     to:
-      - ryan.bartsch@certegy.com.au
-      - jack.ni@certegy.com.au
-      - devadmin@oxipay.com.au
+      - pit@certegy.com.au
+#      - devadmin@oxipay.com.au
   - provider: Slack
     auth_token:
-      secure: yXpzER0fyDmh7wYR6zrrES+wGzz5010OpUvpb5UPMsQZO12Ag3TaeOjSsZ0tDQQ4WaNoNngsPOPiaYWmsfg3fhJrSyPy240FqSwDdhSPqC0=
+      secure: QWE2vFI2LUFAu+jx4lXHihtpPFoVi+ru0mHSC/BvsyXYcRvgh7Tc8zEEaKkj1n5V09+Ti39CvVooS3Y8VTn7PYC6lef2OrQQ+ivqkJL+lZI=
     channel: '#alerts'
