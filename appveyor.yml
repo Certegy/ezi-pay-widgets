@@ -14,10 +14,10 @@ build_script:
   - cmd: npm run build
 
 artifacts:
-  - path: ezipay-au
+  - path: dist/au
     name: ezipay-au
     type: zip
-  - path: ezipay-nz
+  - path: dist/nz
     name: ezipay-nz
     type: zip
 
