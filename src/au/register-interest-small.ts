@@ -4,8 +4,8 @@ import { Config } from './config';
 
 
 (($: JQueryStatic) => {
-    const template = `<a id="oxipay-tag-01" href="#${Config.signupModalId}">
-            <p>Pay the easier way with</p> <img alt="Oxipay" src="${Config.baseContentUrl}/content/images/logo-orange.svg" /> <span>More info</span>
+    const template = `<a id="certegyezipay-tag-01" href="#${Config.signupModalId}">
+            <p>Pay the easier way with</p> <img alt="certegyezipay" src="${Config.baseContentUrl}/content/images/logo-orange.svg" /> <span>More info</span>
         </a>`;
 
     const widget = new ModalInjector($);

@@ -6,7 +6,7 @@ import { Config } from './config';
 
     var productPrice: number;
     var value: string;
-    var currentElement = document.getElementById('oxipay-price-info');
+    var currentElement = document.getElementById('certegyezipay-price-info');
     if(currentElement)
     {
       value = currentElement.attributes.getNamedItem("src").value;
@@ -33,8 +33,8 @@ import { Config } from './config';
     //Banking Rounding
     var roundedDownProductPrice = Math.floor( productPriceDividedByFour * Math.pow(10, 2) ) / Math.pow(10, 2) ;
 
-    const template = `<a id="oxipay-tag-02" href="#${Config.priceInfoModalId}">
-            <p>or 4 payments of <b>$${roundedDownProductPrice.toFixed(2)}</b></p><p>Interest & fee free with <span id="oxipay-img"></span></p>
+    const template = `<a id="certegyezipay-tag-02" href="#${Config.priceInfoModalId}">
+            <p>or 4 payments of <b>$${roundedDownProductPrice.toFixed(2)}</b></p><p>Interest & fee free with <span id="certegyezipay-img"></span></p>
         </a><br>`;
 
     const widget = new ModalInjector($);

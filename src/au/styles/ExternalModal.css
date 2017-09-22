@@ -9,7 +9,7 @@
 body {
   margin: 0; }
 
-div[id^="oxipay-modal-"] {
+div[id^="certegyezipay-modal-"] {
   font-family: 'AvenirLTStd-Medium';
   max-width: 600px;
   padding: 30px;
@@ -18,30 +18,30 @@ div[id^="oxipay-modal-"] {
   max-height: 90vh;
   top: 5vh !important;
   margin: 0 auto; }
-  div[id^="oxipay-modal-"] .logo {
+  div[id^="certegyezipay-modal-"] .logo {
     margin: -30px -30px 20px;
     background-color: #252525;
     height: 110px; }
-    div[id^="oxipay-modal-"] .logo img {
+    div[id^="certegyezipay-modal-"] .logo img {
       height: 100%;
       max-width: 200px;
       width: 100%;
       margin: 0 auto;
       display: block; }
-  div[id^="oxipay-modal-"] h1 {
+  div[id^="certegyezipay-modal-"] h1 {
     font-family: 'AvenirLTStd-Medium';
     color: #252525;
     font-size: 1.5rem;
     line-height: 1em;
     text-transform: none;
     font-weight: normal; }
-  div[id^="oxipay-modal-"] a {
+  div[id^="certegyezipay-modal-"] a {
     color: #e68821;
     text-decoration: none; }
-  div[id^="oxipay-modal-"] p {
+  div[id^="certegyezipay-modal-"] p {
     font-weight: 100;
     color: #333; }
-  div[id^="oxipay-modal-"] .modal_close {
+  div[id^="certegyezipay-modal-"] .modal_close {
     text-align: center;
     text-transform: uppercase;
     color: white;
@@ -52,11 +52,11 @@ div[id^="oxipay-modal-"] {
     background-color: #252525; }
 
 @media screen and (max-width: 670px) {
-  div[id^="oxipay-modal-"] {
+  div[id^="certegyezipay-modal-"] {
     top: 5vh !important;
     left: 0 !important; } }
 
-#use-oxipay {
+#use-certegyezipay {
   width: 100%;
   background: #252525;
   color: white;
@@ -64,10 +64,10 @@ div[id^="oxipay-modal-"] {
   padding: 10px;
   display: block;
   overflow: hidden; }
-  #use-oxipay img {
+  #use-certegyezipay img {
     height: 20px;
     margin-bottom: -6px; }
-  #use-oxipay span {
+  #use-certegyezipay span {
     float: right;
     color: white; }
 

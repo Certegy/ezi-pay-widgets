@@ -1,10 +1,10 @@
 ﻿///<reference path="../../typings/jquery/jquery.d.ts"/>
-///<reference path="../../typings/oxipay.d.ts"/>
+///<reference path="../../typings/certegyezipay.d.ts"/>
 require('jquery');
 require('remodal');
 require('../../node_modules/remodal/dist/remodal.css');
 require('../../node_modules/remodal/dist/remodal-default-theme.css');
-require('../../css/oxipay-branding.css');
+require('../../css/certegyezipay-branding.css');
 import { Config } from './config';
 
 export class ModalInjector {
@@ -40,7 +40,7 @@ export class ModalInjector {
         const bodyTag = 'body';
         const modalDiv =
             `<div id='${modalId}' class='remodal' data-remodal-id='${modalId}'>
-            <iframe id='oxipay-external' src='${url}'></iframe>
+            <iframe id='certegyezipay-external' src='${url}'></iframe>
             <button data-remodal-action="close" class="remodal-close"></button>
         </div>`;
         const body = this.jQuery(bodyTag);
