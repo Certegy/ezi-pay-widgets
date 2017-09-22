@@ -46,7 +46,7 @@ notifications:
   - provider: Email
     to:
       - pit@certegy.com.au
-#      - devadmin@oxipay.com.au
+#      - devadmin@certegy.com.au
   - provider: Slack
     auth_token:
       secure: QWE2vFI2LUFAu+jx4lXHihtpPFoVi+ru0mHSC/BvsyXYcRvgh7Tc8zEEaKkj1n5V09+Ti39CvVooS3Y8VTn7PYC6lef2OrQQ+ivqkJL+lZI=
