@@ -1,6 +1,7 @@
-#branches:
-#  only:
-#    - master
+branches:
+  only:
+    - master
+    - develop
 environment:
   access_key:
     secure: AKIAJIUIKUBZBXHSAR5Q
